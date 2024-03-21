@@ -1,5 +1,14 @@
 <script setup>
 import { ref } from "vue";
+
+const date = ref('')
+const selecTime = ref('')
+const lastName = ref('')
+const firstName = ref('')
+const sei = ref('')
+const mei = ref('')
+const email = ref('')
+
 </script>
 
 <template>
@@ -17,12 +26,12 @@ import { ref } from "vue";
     <form>
       <p>イベント来場 予約フォーム</p>
       <div class="input">
-        <lavel>来日希望日</lavel>
-        <input v-model="text" class="input-form" />
+        <label>来日希望日</label>
+        <input v-model="date" class="input-form" />
       </div>
       <div class="input">
-        <lavel>来日希望時間</lavel>
-        <select v-model="selected" class="input-form">
+        <label>来日希望時間</label>
+        <select v-model="selecTime" class="input-form">
           <option></option>
           <option>10:00~11:00</option>
           <option>11:00~12:00</option>
@@ -32,27 +41,27 @@ import { ref } from "vue";
           </select>
       </div>
       <div class="input">
-        <lavel>姓</lavel>
-        <input v-model="text" class="input-form" />
-        <lavel>名</lavel>
-        <input v-model="text" class="input-form" />
+        <label>姓</label>
+        <input v-model="lastName" class="input-form" />
+        <label>名</label>
+        <input v-model="firstName" class="input-form" />
       </div>
       <div class="input">
-        <lavel>セイ</lavel>
-        <input v-model="text" class="input-form" />
-        <lavel>メイ</lavel>
-        <input v-model="text" class="input-form" />
+        <label>セイ</label>
+        <input v-model="sei" class="input-form" />
+        <label>メイ</label>
+        <input v-model="mei" class="input-form" />
       </div>
       <div class="input">
-        <lavel>メールアドレス</lavel>
+        <label>メールアドレス</label>
         <input v-model="email" class="input-form" />
       </div>
-      <span
-        >※ 本イベントに関して、ご連絡させていただく可能性がございます。</span
-      >
+      <span>※ 本イベントに関して、ご連絡させていただく可能性がございます。</span>
       <a href="">個人情報取り扱いについて</a>
       <a href="">プライバシーポリシー</a>
-      <button>同意して予約する</button>
+      <router-link to="/confirm">
+        <button>同意して予約する</button>
+      </router-link>
       <a href="">戻る</a>
     </form>
   </main>
@@ -62,6 +71,7 @@ import { ref } from "vue";
 main {
   width: 100%;
 }
+
 p {
   font-size: 25px;
   font-weight: bold;
