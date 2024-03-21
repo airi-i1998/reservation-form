@@ -9,6 +9,7 @@ const sei = ref('')
 const mei = ref('')
 const email = ref('')
 
+
 </script>
 
 <template>
@@ -67,7 +68,7 @@ const email = ref('')
   </main>
 </template>
 
-<style scoped>
+<style>
 main {
   width: 100%;
 }

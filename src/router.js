@@ -1,9 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Confirm from "./components/Confirm.vue"
+import Confirm from './views/Confirm.vue'
+import Reserve from './views/Reserve.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [ 
+    {
+      path: '/reserve',
+      name: 'reserve',
+      component: Reserve
+    },
     { 
       path: '/confirm',
       name: 'confirm',
