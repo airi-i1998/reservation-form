@@ -22,7 +22,14 @@ import { ref } from "vue";
       </div>
       <div class="input">
         <lavel>来日希望時間</lavel>
-        <input v-model="text" class="input-form" />
+        <select v-model="selected" class="input-form">
+          <option></option>
+          <option>10:00~11:00</option>
+          <option>11:00~12:00</option>
+          <option>12:00~13:00</option>
+          <option>13:00~14:00</option>
+          <option>14:00~15:00</option>
+          </select>
       </div>
       <div class="input">
         <lavel>姓</lavel>
