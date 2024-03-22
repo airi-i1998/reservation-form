@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import {  useFormStore } from "../stores/form";
+import {  useFormStore } from "@/stores/form";
 
 const formStore =  useFormStore();
 const formData = formStore.formData

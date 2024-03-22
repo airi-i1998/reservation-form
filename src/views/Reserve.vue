@@ -1,5 +1,5 @@
 <script setup>
-import {  useFormStore } from "../stores/form";
+import {  useFormStore } from "@/stores/form";
 import { ref } from "vue";
 
 const date = ref('');
