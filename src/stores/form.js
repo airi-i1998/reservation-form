@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useReserveStore = defineStore('form', {
+export const useFormStore  = defineStore('form', {
   state: () => ({
     formData: {}
   }),

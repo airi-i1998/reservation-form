@@ -1,5 +1,5 @@
 <script setup>
-import { useReserveStore } from "../stores/form";
+import {  useFormStore } from "../stores/form";
 import { ref } from "vue";
 
 const date = ref('');
@@ -10,9 +10,9 @@ const sei = ref('');
 const mei = ref('');
 const email = ref('')
 
-const reserveStore = useReserveStore();
+const formStore =  useFormStore();
 const saveData = () => {
-  reserveStore.saveFormData({
+  formStore.saveFormData({
     date: date.value,
     time: time.value,
     lastName: lastName.value,

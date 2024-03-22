@@ -1,10 +1,9 @@
 <script setup>
 import { computed } from "vue";
-import { useReserveStore } from "../stores/form";
+import {  useFormStore } from "../stores/form";
 
-const reserveStore = useReserveStore();
-const formData = reserveStore.formData
-const fullName = computed()
+const formStore =  useFormStore();
+const formData = formStore.formData
 
 </script>
 
