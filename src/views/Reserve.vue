@@ -1,28 +1,32 @@
 <script setup>
+import { useReserveStore } from "../stores/form";
 import { ref } from "vue";
 
-const date = ref('')
-const selecTime = ref('')
-const lastName = ref('')
-const firstName = ref('')
-const sei = ref('')
-const mei = ref('')
+const date = ref('');
+const time = ref('');
+const lastName = ref('');
+const firstName = ref('');
+const sei = ref('');
+const mei = ref('');
 const email = ref('')
 
 
+
+const reserveStore = useReserveStore();
+const saveData = () => {
+  reserveStore.saveFormData({
+    date: date.value,
+    time: time.value,
+    lastName: lastName.value,
+    firstName: firstName.value,
+    sei: sei.value,
+    mei: mei.value,
+    email: email.value,
+  });
+};
 </script>
 
 <template>
-  <header>
-    <!-- <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    /> -->
-  </header>
-
   <main>
     <form>
       <p>イベント来場 予約フォーム</p>
@@ -32,14 +36,14 @@ const email = ref('')
       </div>
       <div class="input">
         <label>来日希望時間</label>
-        <select v-model="selecTime" class="input-form">
+        <select v-model="time" class="input-form">
           <option></option>
           <option>10:00~11:00</option>
           <option>11:00~12:00</option>
           <option>12:00~13:00</option>
           <option>13:00~14:00</option>
           <option>14:00~15:00</option>
-          </select>
+        </select>
       </div>
       <div class="input">
         <label>姓</label>
@@ -57,11 +61,13 @@ const email = ref('')
         <label>メールアドレス</label>
         <input v-model="email" class="input-form" />
       </div>
-      <span>※ 本イベントに関して、ご連絡させていただく可能性がございます。</span>
+      <span
+        >※ 本イベントに関して、ご連絡させていただく可能性がございます。</span
+      >
       <a href="">個人情報取り扱いについて</a>
       <a href="">プライバシーポリシー</a>
       <router-link to="/confirm">
-        <button>同意して予約する</button>
+        <button @click="saveData">同意して予約する</button>
       </router-link>
       <a href="">戻る</a>
     </form>
@@ -71,6 +77,7 @@ const email = ref('')
 <style>
 main {
   width: 100%;
+  overflow-x: hidden;
 }
 
 p {
@@ -83,7 +90,6 @@ form {
   width: 80%;
   display: flex;
   flex-flow: column;
-  /* justify-content: space-around; */
   justify-content: center;
   margin: 10%;
 }
@@ -99,30 +105,4 @@ form {
 a {
   place-items: center;
 }
-/* header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-} */
 </style>
