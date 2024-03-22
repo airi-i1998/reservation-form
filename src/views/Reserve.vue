@@ -10,8 +10,6 @@ const sei = ref('');
 const mei = ref('');
 const email = ref('')
 
-
-
 const reserveStore = useReserveStore();
 const saveData = () => {
   reserveStore.saveFormData({
@@ -61,9 +59,7 @@ const saveData = () => {
         <label>メールアドレス</label>
         <input v-model="email" class="input-form" />
       </div>
-      <span
-        >※ 本イベントに関して、ご連絡させていただく可能性がございます。</span
-      >
+      <span>※ 本イベントに関して、ご連絡させていただく可能性がございます。</span>
       <a href="">個人情報取り扱いについて</a>
       <a href="">プライバシーポリシー</a>
       <router-link to="/confirm">
