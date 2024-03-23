@@ -5,6 +5,8 @@ const firstKanaName = ref('');
 </script>
 
 <template>
-  <label>メイ</label>
-  <input v-model="firstKanaName" class="input-form" />
+  <div class="form-input">
+    <label>メイ</label>
+    <input v-model="firstKanaName" />
+  </div>
 </template>

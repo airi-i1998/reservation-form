@@ -5,9 +5,9 @@ const address = ref('');
 </script>
 
 <template>
-  <div class="input">
+  <div class="form-input">
     <label>メールアドレス</label>
-    <input v-model="address" class="input-form" />
+    <input v-model="address" />
     <span>※ 本イベントに関して、ご連絡させていただく可能性がございます。</span>
   </div>
 </template>

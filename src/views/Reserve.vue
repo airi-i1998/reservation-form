@@ -7,7 +7,7 @@ import FirstKanaName from "@/components/form/KanaName/FirstKanaName.vue";
 import LastKanaName from "@/components/form/KanaName/LastKanaName.vue";
 import Address from "@/components/form/Address.vue";
 import { useFormStore } from "@/stores/form";
-import { storeToRefs } from 'pinia'
+import { storeToRefs } from "pinia";
 
 const formStore = useFormStore();
 const saveData = () => {
@@ -25,8 +25,8 @@ const saveData = () => {
 
 <template>
   <main>
+    <p>イベント来場 予約フォーム</p>
     <form>
-      <p>イベント来場 予約フォーム</p>
       <Date />
       <ReservationTime />
       <LastName />
@@ -45,6 +45,10 @@ const saveData = () => {
 </template>
 
 <style>
+/* html,body {
+  overflow: hidden;
+} */
+
 main {
   width: 100%;
   overflow-x: hidden;
@@ -57,22 +61,42 @@ p {
 }
 
 form {
-  width: 80%;
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  margin: 10%;
+  width: fit-content;
+  margin: auto;
+  padding: 0 30px;
 }
 
-.input {
+input,
+select {
+  height: 20px;
+}
+
+.form-input {
   display: contents;
-  margin: 20px;
 }
 
-.input-form {
-  width: 80%;
+.form-input::after {
+  content: "";
+  display: block;
+  margin: 10px;
 }
+
 a {
-  place-items: center;
+  text-align: center;
+  margin-top: 5px;
+}
+
+span {
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0;
+  color: white;
+  background-color: black;
 }
 </style>

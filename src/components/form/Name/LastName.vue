@@ -5,6 +5,8 @@ const lastName = ref('')
 </script>
 
 <template>
-  <label>姓</label>
-  <input v-model="lastName" class="input-form" />
+  <div class="form-input">
+    <label>姓</label>
+    <input v-model="lastName" />
+  </div>
 </template>

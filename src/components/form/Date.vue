@@ -6,8 +6,8 @@ const date = ref("");
 </script>
 
 <template>
-  <div class="input">
+  <div class="form-input">
     <label>来日希望日</label>
-    <input v-model="date" class="input-form" />
+    <input v-model="date" />
   </div>
 </template>
