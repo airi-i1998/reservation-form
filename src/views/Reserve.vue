@@ -10,30 +10,27 @@ import { useFormStore } from "@/stores/form";
 import { storeToRefs } from "pinia";
 
 const formStore = useFormStore();
-const saveData = () => {
-  formStore.saveFormData({
-    date: date.value,
-    reservationTime: reservationTime.value,
-    lastName: lastName.value,
-    firstName: firstName.value,
-    lastKanaName: lastKanaName.value,
-    firstKanaName: firstKanaName.value,
-    address: address.value,
-  });
-};
+const { date } = storeToRefs(formStore);
+const { reservationTime } = storeToRefs(formStore);
+const { lastName } = storeToRefs(formStore);
+const { firstName } = storeToRefs(formStore);
+const { lastKanaName } = storeToRefs(formStore);
+const { firstKanaName } = storeToRefs(formStore);
+const { address } = storeToRefs(formStore);
+
 </script>
 
 <template>
   <main>
     <p>イベント来場 予約フォーム</p>
     <form>
-      <Date />
-      <ReservationTime />
-      <LastName />
-      <FirstName />
-      <LastKanaName />
-      <FirstKanaName />
-      <Address />
+      <Date :date="date" />
+      <ReservationTime :reservationTime="reservationTime"/>
+      <LastName :lastName="lastName"/>
+      <FirstName :firstName="firstName"/>
+      <LastKanaName :lastKanaName="lastKanaName"/>
+      <FirstKanaName :firstKanaName="firstKanaName"/>
+      <Address :address="address"/>
       <a href="">個人情報取り扱いについて</a>
       <a href="">プライバシーポリシー</a>
       <router-link to="/confirm">
@@ -45,10 +42,6 @@ const saveData = () => {
 </template>
 
 <style>
-/* html,body {
-  overflow: hidden;
-} */
-
 main {
   width: 100%;
   overflow-x: hidden;
