@@ -60,7 +60,7 @@ main {
 }
 
 .title {
-  margin-top: 10%;
+  margin-top: 5%;
   font-size: 25px;
   font-weight: bold;
   text-align: center;
@@ -75,19 +75,17 @@ form {
   justify-content: center;
 }
 
-.form-container {
-  margin-left: 20%;
-}
-
 .form-label {
   display: block;
   margin-top: 15px;
   margin-bottom: 5px;
+  margin-left: 10%;
 }
 
 .form-input {
   width: 80%;
   margin-bottom: 15px;
+  margin-left: 10%;
 }
 
 input {
@@ -103,12 +101,14 @@ input {
 .name {
   margin-right: 10px;
   width: 40%;
+  margin-left: 10%;
 }
 
 .name-label {
   display: block;
   margin-top: 15px;
   margin-bottom: 5px;
+  margin-left: 10%;
 }
 
 p {

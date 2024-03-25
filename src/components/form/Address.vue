@@ -15,7 +15,16 @@ const updateAddress = (event) => {
 <template>
   <div>
     <label class="form-label">メールアドレス</label>
-    <input v-model="formAddress" @input="updateAddress" class="form-input"/>
-    <p>※ 本イベントに関して、ご連絡させていただく可能性がございます。</p>
+    <input v-model="formAddress" @input="updateAddress" class="form-input" />
+    <p class="attention">
+      ※ 本イベントに関して、ご連絡させていただく可能性がございます。
+    </p>
   </div>
 </template>
+
+<style scoped>
+.attention {
+  font-size: small;
+  margin-left: 10%;
+}
+</style>
