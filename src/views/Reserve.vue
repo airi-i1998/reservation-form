@@ -8,6 +8,7 @@ import LastKanaName from "@/components/form/KanaName/LastKanaName.vue";
 import Address from "@/components/form/Address.vue";
 import { useFormStore } from "@/stores/form";
 import { storeToRefs } from "pinia";
+import router from '@/router.ts';
 
 const formStore = useFormStore();
 const { date } = storeToRefs(formStore);
@@ -18,6 +19,9 @@ const { lastKanaName } = storeToRefs(formStore);
 const { firstKanaName } = storeToRefs(formStore);
 const { address } = storeToRefs(formStore);
 
+const saveData = () => {
+  router.push('confirm');
+};
 </script>
 
 <template>
@@ -25,17 +29,15 @@ const { address } = storeToRefs(formStore);
     <p>イベント来場 予約フォーム</p>
     <form>
       <Date :date="date" />
-      <ReservationTime :reservationTime="reservationTime"/>
-      <LastName :lastName="lastName"/>
-      <FirstName :firstName="firstName"/>
-      <LastKanaName :lastKanaName="lastKanaName"/>
-      <FirstKanaName :firstKanaName="firstKanaName"/>
-      <Address :address="address"/>
+      <ReservationTime :reservationTime="reservationTime" />
+      <LastName :lastName="lastName" />
+      <FirstName :firstName="firstName" />
+      <LastKanaName :lastKanaName="lastKanaName" />
+      <FirstKanaName :firstKanaName="firstKanaName" />
+      <Address :address="address" />
       <a href="">個人情報取り扱いについて</a>
       <a href="">プライバシーポリシー</a>
-      <router-link to="/confirm">
-        <button @click="saveData">同意して予約する</button>
-      </router-link>
+      <button @click="saveData">同意して予約する</button>
       <a href="">戻る</a>
     </form>
   </main>
