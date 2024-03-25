@@ -1,21 +1,15 @@
-<script>
-import { ref } from 'vue';
+<script setup>
+import { ref } from "vue";
 import { useFormStore } from "@/stores/form";
 
-export default {
-  props: ['reservationTime'],
+const props = defineProps(["reservationTime"]);
 
-  setup(props) {
-    const formStore =useFormStore();
-    const formReservationTime = ref(props.reservationTime);
+const formStore = useFormStore();
+const formReservationTime = ref(props.reservationTime);
 
-    const updateReservationTime = (event) => {
-      formStore.reservationTime = event.target.value;
-    };
-    
-    return{ formReservationTime, updateReservationTime}
-  }
-}
+const updateReservationTime = (event) => {
+  formStore.reservationTime = event.target.value;
+};
 </script>
 
 <template>

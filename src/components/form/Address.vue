@@ -1,27 +1,21 @@
-<script>
-import { ref } from 'vue';
-import { useFormStore } from '@/stores/form';
+<script setup>
+import { ref } from "vue";
+import { useFormStore } from "@/stores/form";
 
-export default {
-  props: ['address'],
+const props = defineProps(["address"]);
 
-   setup(props) {
-    const formStore = useFormStore();
-    const formAddress = ref(props.address);
+const formStore = useFormStore();
+const formAddress = ref(props.address);
 
-    const updateAddress = (event) => {
-      formStore.address = event.target.value;
-    };
-
-    return{ formAddress, updateAddress };
-   }
-}
+const updateAddress = (event) => {
+  formStore.address = event.target.value;
+};
 </script>
 
 <template>
   <div class="form-input">
     <label>メールアドレス</label>
-    <input v-model="formAddress" @input="updateAddress"/>
+    <input v-model="formAddress" @input="updateAddress" />
     <span>※ 本イベントに関して、ご連絡させていただく可能性がございます。</span>
   </div>
 </template>

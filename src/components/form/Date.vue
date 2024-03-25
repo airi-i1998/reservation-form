@@ -1,21 +1,15 @@
-<script >
-import { ref } from 'vue';
-import { useFormStore } from '@/stores/form';
+<script setup>
+import { ref } from "vue";
+import { useFormStore } from "@/stores/form";
 
-export default {
-  props: ['date'],
+const props = defineProps(["date"]);
 
-  setup(props) {
-    const formStore = useFormStore();
-    const formDate = ref(props.date);
+const formStore = useFormStore();
+const formDate = ref(props.date);
 
-    const updateDate = (event) => {
-      formStore.date = event.target.value;
-    };
-
-    return{ formDate, updateDate };
-  }
-}
+const updateDate = (event) => {
+  formStore.date = event.target.value;
+};
 </script>
 
 <template>

@@ -1,21 +1,15 @@
-<script>
-import { ref } from 'vue';
-import { useFormStore } from '@/stores/form';
+<script setup>
+import { ref } from "vue";
+import { useFormStore } from "@/stores/form";
 
-export default {
-  props: ['firstKanaName'],
+const props = defineProps(["firstKanaName"]);
 
-  setup(props) {
-    const formStore = useFormStore();
-    const formFirstKanaName = ref(props.firstKanaName);
+const formStore = useFormStore();
+const formFirstKanaName = ref(props.firstKanaName);
 
-    const updateFirstKanaName = (event) => {
-      formStore.firstKanaName = event.target.value;
-    };
-    
-    return{ formFirstKanaName, updateFirstKanaName };
-  }
-}
+const updateFirstKanaName = (event) => {
+  formStore.firstKanaName = event.target.value;
+};
 </script>
 
 <template>
