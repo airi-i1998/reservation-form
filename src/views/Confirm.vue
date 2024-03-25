@@ -8,7 +8,7 @@ const { date, reservationTime, lastName, address } = storeToRefs(
 
 <template>
   <form>
-    <p>予約内容の確認</p>
+    <p class="title">予約内容の確認</p>
     <label>以下の内容で変更しますか？</label>
     <div class="item">
       <label>来場希望日</label>
