@@ -15,7 +15,7 @@ const updateReservationTime = (event) => {
 <template>
   <div class="form-input">
     <label>来日希望時間</label>
-    <select v-model="formReservationTime" @input="updateReservationTime">
+    <select v-model="formReservationTime" @change="updateReservationTime">
       <option></option>
       <option>10:00~11:00</option>
       <option>11:00~12:00</option>
@@ -25,3 +25,9 @@ const updateReservationTime = (event) => {
     </select>
   </div>
 </template>
+
+<style scoped>
+select {
+  padding:2px 0;
+}
+</style>
