@@ -28,6 +28,6 @@ const updateReservationTime = (event) => {
 
 <style scoped>
 select {
-  padding:2px 0;
+  padding: 3px 0;
 }
 </style>

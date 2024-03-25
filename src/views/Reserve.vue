@@ -61,8 +61,7 @@ form {
   padding: 0 30px;
 }
 
-input,
-select {
+input {
   height: 20px;
 }
 
@@ -81,7 +80,7 @@ a {
   margin-top: 5px;
 }
 
-span {
+label {
   margin-top: 5px;
 }
 

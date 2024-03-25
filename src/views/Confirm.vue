@@ -9,22 +9,22 @@ const { date, reservationTime, lastName, address } = storeToRefs(
 <template>
   <form>
     <p>予約内容の確認</p>
-    <span>以下の内容で変更しますか？</span>
+    <label>以下の内容で変更しますか？</label>
     <div class="item">
-      <span>来場希望日</span>
-      <span>{{ date }}</span>
+      <label>来場希望日</label>
+      <label>{{ date }}</label>
     </div>
     <div class="item">
-      <span>来場希望時間</span>
-      <span>{{ reservationTime }}</span>
+      <label>来場希望時間</label>
+      <label>{{ reservationTime }}</label>
     </div>
     <div class="item">
-        <span>お名前</span>
-        <span>{{ lastName }}</span>
+        <label>お名前</label>
+        <label>{{ lastName }}</label>
     </div>
     <div class="item">
-        <span>メールアドレス</span>
-        <span>{{ address }}</span>
+        <label>メールアドレス</label>
+        <label>{{ address }}</label>
     </div class="item">
     <button>同意して予約する</button>
     <a href="">戻る</a>
