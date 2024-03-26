@@ -13,8 +13,8 @@ const updateLastName = (event) => {
 </script>
 
 <template>
-  <div class="form-input">
-    <label>姓</label>
-    <input v-model="formLastName" @inout="updateLastName" />
+  <div class="name name-margin">
+    <label class="name-label">姓</label>
+    <input v-model="formLastName" @inout="updateLastName" class="name-input"/>
   </div>
 </template>

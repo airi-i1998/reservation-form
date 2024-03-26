@@ -8,6 +8,7 @@ import LastKanaName from "@/components/form/KanaName/LastKanaName.vue";
 import Address from "@/components/form/Address.vue";
 import { useFormStore } from "@/stores/form";
 import { storeToRefs } from "pinia";
+import router from "@/router.ts";
 
 const formStore = useFormStore();
 const { date } = storeToRefs(formStore);
@@ -18,78 +19,121 @@ const { lastKanaName } = storeToRefs(formStore);
 const { firstKanaName } = storeToRefs(formStore);
 const { address } = storeToRefs(formStore);
 
+const toConfirmPage = () => {
+  router.push("confirm");
+};
 </script>
 
 <template>
+  <!-- 全体 -->
   <main>
-    <p>イベント来場 予約フォーム</p>
+    <p class="title">イベント来場 予約フォーム</p>
+    <!-- フォーム -->
     <form>
       <Date :date="date" />
-      <ReservationTime :reservationTime="reservationTime"/>
-      <LastName :lastName="lastName"/>
-      <FirstName :firstName="firstName"/>
-      <LastKanaName :lastKanaName="lastKanaName"/>
-      <FirstKanaName :firstKanaName="firstKanaName"/>
-      <Address :address="address"/>
+      <ReservationTime :reservationTime="reservationTime" />
+      <!-- 姓名全体 -->
+      <div class="form-width">
+        <div class="name-container">
+          <!-- LastNameコンポーネント -->
+          <LastName :lastName="lastName" />
+          <!-- FirstNameコンポーネント -->
+          <FirstName :firstName="firstName" />
+        </div>
+      </div>
+      <div class="form-width">
+        <div class="name-container">
+          <LastKanaName :lastKanaName="lastKanaName" />
+          <FirstKanaName :firstKanaName="firstKanaName" />
+        </div>
+      </div>
+      <Address :address="address" />
       <a href="">個人情報取り扱いについて</a>
       <a href="">プライバシーポリシー</a>
-      <router-link to="/confirm">
-        <button @click="saveData">同意して予約する</button>
-      </router-link>
+      <button @click="toConfirmPage">同意して予約する</button>
       <a href="">戻る</a>
     </form>
   </main>
 </template>
 
 <style>
+/* 全体 */
 main {
   width: 100%;
   overflow-x: hidden;
 }
 
-p {
+.title {
+  margin-top: 5%;
   font-size: 25px;
   font-weight: bold;
   text-align: center;
 }
 
+/* フォーム */
 form {
   display: flex;
   flex-flow: column;
   width: fit-content;
   margin: auto;
-  padding: 0 30px;
+  justify-content: center;
 }
 
-input,
-select {
-  height: 20px;
+.form-width {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.form-label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .form-input {
-  display: contents;
+  margin-bottom: 15px;
 }
 
-.form-input::after {
-  content: "";
+input {
+  height: 20px;
+  width: 100%;
+}
+
+/* 姓名全体 */
+.name-container {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.name {
+  width: 50%;
+}
+
+.name-label {
   display: block;
-  margin: 10px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.name-input {
+  margin-right: 10px;
+}
+
+.name-margin {
+  margin-right: 20px;
 }
 
 a {
   text-align: center;
-  margin-top: 5px;
-}
-
-span {
-  margin-top: 5px;
+  margin: 10px 0;
 }
 
 button {
   width: 100%;
   height: 40px;
-  margin: 10px 0;
+  margin: 15px 0;
   color: white;
   background-color: black;
+  border-radius: 5px;
 }
 </style>

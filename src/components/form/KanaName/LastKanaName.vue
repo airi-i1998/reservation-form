@@ -13,8 +13,8 @@ const updateLastKanaName = (event) => {
 </script>
 
 <template>
-  <div class="form-input">
-    <label>セイ</label>
-    <input v-model="formLastKanaName" @input="updateLastKanaName" />
+  <div class="name name-margin">
+    <label class="name-label">セイ</label>
+    <input v-model="formLastKanaName" @input="updateLastKanaName" class="name-input"/>
   </div>
 </template>

@@ -13,8 +13,8 @@ const updateDate = (event) => {
 </script>
 
 <template>
-  <div class="form-input">
-    <label>来日希望日</label>
-    <input v-model="formDate" @input="updateDate" />
+  <div class="form-width">
+    <label class="form-label">来日希望日</label>
+    <input v-model="formDate" @input="updateDate" class="form-input"/>
   </div>
 </template>

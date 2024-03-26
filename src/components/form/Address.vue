@@ -13,9 +13,19 @@ const updateAddress = (event) => {
 </script>
 
 <template>
-  <div class="form-input">
-    <label>メールアドレス</label>
-    <input v-model="formAddress" @input="updateAddress" />
-    <span>※ 本イベントに関して、ご連絡させていただく可能性がございます。</span>
+  <div class="form-width">
+    <label class="form-label">メールアドレス</label>
+    <input v-model="formAddress" @input="updateAddress" class="form-input" />
+    <p class="attention">
+      ※ 本イベントに関して、ご連絡させていただく可能性がございます。
+    </p>
   </div>
 </template>
+
+<style scoped>
+
+
+.attention {
+  font-size: small;
+}
+</style>
