@@ -23,8 +23,6 @@ const updateAddress = (event) => {
 </template>
 
 <style scoped>
-
-
 .attention {
   font-size: small;
 }
