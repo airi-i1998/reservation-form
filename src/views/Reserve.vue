@@ -19,7 +19,7 @@ const { lastKanaName } = storeToRefs(formStore);
 const { firstKanaName } = storeToRefs(formStore);
 const { address } = storeToRefs(formStore);
 
-const saveData = () => {
+const toConfirmPage = () => {
   router.push("confirm");
 };
 </script>
@@ -46,7 +46,7 @@ const saveData = () => {
       <Address :address="address" />
       <a href="">個人情報取り扱いについて</a>
       <a href="">プライバシーポリシー</a>
-      <button @click="saveData">同意して予約する</button>
+      <button @click="toConfirmPage">同意して予約する</button>
       <a href="">戻る</a>
     </form>
   </main>
