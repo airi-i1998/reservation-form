@@ -111,10 +111,6 @@ input {
   margin-left: 10%;
 }
 
-p {
-  margin-top: 5px;
-}
-
 a {
   text-align: center;
   margin: 10px 0;
