@@ -13,7 +13,7 @@ const updateReservationTime = (event) => {
 </script>
 
 <template>
-  <div>
+  <div class="form-width">
     <label class="form-label">来日希望時間</label>
     <select
       v-model="formReservationTime"
@@ -33,5 +33,6 @@ const updateReservationTime = (event) => {
 <style scoped>
 select {
   height: 27px;
+  width: 100%;
 }
 </style>

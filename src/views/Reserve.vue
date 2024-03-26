@@ -33,15 +33,19 @@ const toConfirmPage = () => {
       <Date :date="date" />
       <ReservationTime :reservationTime="reservationTime" />
       <!-- 姓名全体 -->
-      <div class="name-container">
-        <!-- LastNameコンポーネント -->
-        <LastName :lastName="lastName" />
-        <!-- FirstNameコンポーネント -->
-        <FirstName :firstName="firstName" />
+      <div class="form-width">
+        <div class="name-container">
+          <!-- LastNameコンポーネント -->
+          <LastName :lastName="lastName" />
+          <!-- FirstNameコンポーネント -->
+          <FirstName :firstName="firstName" />
+        </div>
       </div>
-      <div class="name-container">
-        <LastKanaName :lastKanaName="lastKanaName" />
-        <FirstKanaName :firstKanaName="firstKanaName" />
+      <div class="form-width">
+        <div class="name-container">
+          <LastKanaName :lastKanaName="lastKanaName" />
+          <FirstKanaName :firstKanaName="firstKanaName" />
+        </div>
       </div>
       <Address :address="address" />
       <a href="">個人情報取り扱いについて</a>
@@ -75,21 +79,24 @@ form {
   justify-content: center;
 }
 
+.form-width {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .form-label {
   display: block;
   margin-top: 15px;
   margin-bottom: 5px;
-  margin-left: 10%;
 }
 
 .form-input {
-  width: 80%;
   margin-bottom: 15px;
-  margin-left: 10%;
 }
 
 input {
   height: 20px;
+  width: 100%;
 }
 
 /* 姓名全体 */
@@ -99,16 +106,21 @@ input {
 }
 
 .name {
-  margin-right: 10px;
-  width: 40%;
-  margin-left: 10%;
+  width: 50%;
 }
 
 .name-label {
   display: block;
   margin-top: 15px;
   margin-bottom: 5px;
-  margin-left: 10%;
+}
+
+.name-input {
+  margin-right: 10px;
+}
+
+.name-margin {
+  margin-right: 20px;
 }
 
 a {

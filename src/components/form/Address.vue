@@ -13,7 +13,7 @@ const updateAddress = (event) => {
 </script>
 
 <template>
-  <div>
+  <div class="form-width">
     <label class="form-label">メールアドレス</label>
     <input v-model="formAddress" @input="updateAddress" class="form-input" />
     <p class="attention">
@@ -23,8 +23,9 @@ const updateAddress = (event) => {
 </template>
 
 <style scoped>
+
+
 .attention {
   font-size: small;
-  margin-left: 10%;
 }
 </style>
