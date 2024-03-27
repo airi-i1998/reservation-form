@@ -1,9 +1,12 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useFormStore } from "@/stores/form";
-const { date, reservationTime, lastName, address } = storeToRefs(
+
+const { date, reservationTime, lastName, firstName, lastKanaName, firstKanaName, address } = storeToRefs(
   useFormStore()
 );
+
+const fullName = lastName.value + ' ' + firstName.value + ' ' + '(' + lastKanaName.value + ' ' + firstKanaName.value + ')';
 </script>
 
 <template>
@@ -21,7 +24,7 @@ const { date, reservationTime, lastName, address } = storeToRefs(
       </div>
       <div class="item">
           <label>お名前</label>
-          <p>{{ lastName }}</p>
+          <p>{{ fullName }}</p>
       </div>
       <div class="item">
           <label>メールアドレス</label>
