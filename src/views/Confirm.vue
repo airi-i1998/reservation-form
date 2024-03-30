@@ -1,12 +1,34 @@
 <script setup>
-import { storeToRefs } from "pinia";
 import { useFormStore } from "@/stores/form";
+import { storeToRefs } from "pinia";
+import router from "@/router.ts";
+import liff from "@line/liff";
 
 const { date, reservationTime, lastName, firstName, lastKanaName, firstKanaName, address } = storeToRefs(
   useFormStore()
 );
 
 const fullName = lastName.value + ' ' + firstName.value + ' ' + '(' + lastKanaName.value + ' ' + firstKanaName.value + ')';
+
+const sendMessage = async () => {
+  try {
+    await liff.sendMessages([
+      {
+        type: "text",
+        text: `予約内容\n来場希望日：${date.value}\n来場希望日：${ reservationTime.value }\nお名前：${lastName.value} ${firstName.value} (${lastKanaName.value} ${firstKanaName.value})\nメールアドレス：${ address.value }`
+      },
+    ]);
+    console.log("message sent");
+  } catch (err) {
+    console.log("error", err);
+  }
+};
+
+const toReservePage = () => {
+  router.push("/");
+  sendMessage();
+};
+
 </script>
 
 <template>
@@ -29,8 +51,8 @@ const fullName = lastName.value + ' ' + firstName.value + ' ' + '(' + lastKanaNa
       <div class="item">
           <label>メールアドレス</label>
           <p>{{ address }}</p>
-      </div class="item">
-      <button>同意して予約する</button>
+      </div>
+      <button @click="toReservePage">同意して予約する</button>
       <a href="">戻る</a>
     </form>
   </main>

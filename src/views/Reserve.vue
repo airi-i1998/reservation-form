@@ -10,6 +10,7 @@ import { useFormStore } from "@/stores/form";
 import { storeToRefs } from "pinia";
 import router from "@/router.ts";
 
+
 const formStore = useFormStore();
 const { date } = storeToRefs(formStore);
 const { reservationTime } = storeToRefs(formStore);
@@ -35,9 +36,7 @@ const toConfirmPage = () => {
       <!-- 姓名全体 -->
       <div class="form-width">
         <div class="name-container">
-          <!-- LastNameコンポーネント -->
           <LastName :lastName="lastName" />
-          <!-- FirstNameコンポーネント -->
           <FirstName :firstName="firstName" />
         </div>
       </div>
