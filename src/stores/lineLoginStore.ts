@@ -1,7 +1,7 @@
 import liff from '@line/liff'
 import { defineStore } from 'pinia';
 
-export const useLineLoginStore = defineStore('lineStore',() => {
+export const useLineLoginStore = defineStore('loginStore',() => {
     const initializeLiff = async () => {
       try {
         await liff.init({
@@ -12,13 +12,6 @@ export const useLineLoginStore = defineStore('lineStore',() => {
         if (!isLogedIn){
             liff.login()
         }
-        await liff.sendMessages([
-          {
-            type: "text",
-            text: "メッセージ送信完了",
-          },
-        ]);
-        console.log("message sent");
       } catch (err) {
         console.log("error", err);
       }
