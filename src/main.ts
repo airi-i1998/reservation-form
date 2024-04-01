@@ -1,11 +1,22 @@
 import "./assets/main.css";
 
 import { createApp } from "vue";
-import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
+import { createPinia } from "pinia";
+import { useLineLoginStore } from "@/stores/lineLoginStore"
 
-const app = createApp(App)
-const pinia = createPinia()
+const vueApp = createApp(App)
+const vueAppInit = () => {
+    vueApp
+    .use(router)
+    .mount('#app')
+}
 
-createApp(App).use(router).use(pinia).mount("#app");
+const initializeApplication = async () => {
+    vueApp.use(createPinia())
+    useLineLoginStore();
+    vueAppInit()
+}
+
+initializeApplication()
