@@ -10,12 +10,12 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:14.4-alpine
+    image: mysql:14.4-alpine
     ports:
       - 5432:5432
     volumes:
-      - ../postgres/init.d:/docker-entrypoint-initdb.d
-      - ../postgres/pgdata:/var/lib/postgresql/data
+      - ../mysql/init.d:/docker-entrypoint-initdb.d
+      - ../mysql/pgdata:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
