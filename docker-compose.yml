@@ -1,10 +1,11 @@
 version: "3.8"
 services:
   app:
-    build: .
+    build: ./reservation_system
     tty: true
     ports:
       - 3000:3000
+      # appが更新されたら、コンテナ起動時にreservation_systemが更新される
     volumes:
       - ./reservation_system:/app
     environment:
@@ -14,10 +15,11 @@ services:
   db:
     image: mysql:8.3.0
     ports:
-      - 5432:5432
+      - 3306:3306
     volumes:
-      - ../mysql/init.d:/docker-entrypoint-initdb.d
-      - ../mysql/pgdata:/var/lib/postgresql/data
+      # - ../mysql/init.d:/docker-entrypoint-initdb.d
+      # /var/lib/mysqlが更新されたら、コンテナ起動時に./dab/dataが更新される
+      - './db/data:/var/lib/mysql'
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_USER: $MYSQL_USER
