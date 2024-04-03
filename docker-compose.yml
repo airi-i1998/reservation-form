@@ -8,7 +8,7 @@ services:
       - 8080:8080
     volumes:
       - ./frontend:/app
-      - ./frontend:/app　/node_modules
+      - client_node_modules:/app/node_modules
 
   server:
     build: ./reservation_system
@@ -40,3 +40,6 @@ services:
     hostname: $DB_HOSTNAME
     restart: always
     user: $DB_USER
+
+volumes:
+  client_node_modules:

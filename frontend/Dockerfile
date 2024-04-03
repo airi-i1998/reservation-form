@@ -1,12 +1,12 @@
 # node:20.11.1をベースにコンテナを構築
 FROM node:20.11.1
 WORKDIR /app
-# buildcontext内（ローカルファイルシステム上）の"package.json" , "package-lock.json",カレントディレクトリ内のすべての
+# buildcontext内（ローカルファイルシステム上）の"package.json" , "package-lock.json",カレントディレクトリ内のすべてのファイルをコピー
 COPY ["package.json" , "package-lock.json", "./"]
 # アプリケーションのソースコードコピー
 RUN npm install
 
-# ディレクトリの位置が不一致でここでnode-moduが失われる
+# ディレクトリの位置が不一致でここでnode-modulesが失われる
 COPY . /app
 RUN npm run build
 # 開発サーバーの起動をCMDで実行
