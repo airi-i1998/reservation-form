@@ -36,3 +36,4 @@ select {
   width: 100%;
 }
 </style>
+../../stores/form
