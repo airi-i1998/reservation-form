@@ -30,4 +30,4 @@ coverage
 *.tsbuildinfo
 
 .env
-db/data/
+db/data/ 
