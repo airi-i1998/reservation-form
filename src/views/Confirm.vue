@@ -4,12 +4,12 @@ import { storeToRefs } from "pinia";
 import router from "@/router.ts";
 import liff from "@line/liff";
 
-const { date, reservationTime, lastName, firstName, lastKanaName, firstKanaName, address } = storeToRefs(
+const { date, reservationTime, firstName, lastName, firstKanaName, lastKanaName, address } = storeToRefs(
   useFormStore()
 );
 
-const fullName = lastName.value + ' ' + firstName.value + ' ' + '(' + lastKanaName.value + ' ' + firstKanaName.value + ')';
-const formInputText = `予約内容\n来場希望日：${date.value}\n来場希望日：${ reservationTime.value }\nお名前：${lastName.value} ${firstName.value} (${lastKanaName.value} ${firstKanaName.value})\nメールアドレス：${ address.value }`
+const fullName = firstName.value + ' ' + lastName.value + ' ' + '(' + firstKanaName.value + ' ' + lastKanaName.value + ')';
+const formInputText = `⚪︎予約内容\n来場希望日：${date.value}\n来場希望日：${ reservationTime.value }\nお名前：${firstName.value} ${lastName.value} (${firstKanaName.value} ${lastKanaName.value})\nメールアドレス：${ address.value }`
 const sendMessage = async () => {
   try {
     await liff.sendMessages([

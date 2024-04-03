@@ -13,8 +13,8 @@ const updateFirstName = (event) => {
 </script>
 
 <template>
-  <div class="name">
-    <label class="name-label">名</label>
-    <input v-model="formFirstName" @input="updateFirstName" />
+  <div class="name name-margin">
+    <label class="name-label">姓</label>
+    <input v-model="formFirstName" @input="updateFirstName" class="name-input" />
   </div>
 </template>

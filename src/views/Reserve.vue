@@ -1,8 +1,8 @@
 <script setup>
 import Date from "@/components/form/Date.vue";
 import ReservationTime from "@/components/form/ReservationTime.vue";
-import LastName from "@/components/form/Name/LastName.vue";
 import FirstName from "@/components/form/Name/FirstName.vue";
+import LastName from "@/components/form/Name/LastName.vue";
 import FirstKanaName from "@/components/form/KanaName/FirstKanaName.vue";
 import LastKanaName from "@/components/form/KanaName/LastKanaName.vue";
 import Address from "@/components/form/Address.vue";
@@ -14,10 +14,10 @@ import router from "@/router.ts";
 const formStore = useFormStore();
 const { date } = storeToRefs(formStore);
 const { reservationTime } = storeToRefs(formStore);
-const { lastName } = storeToRefs(formStore);
 const { firstName } = storeToRefs(formStore);
-const { lastKanaName } = storeToRefs(formStore);
+const { lastName } = storeToRefs(formStore);
 const { firstKanaName } = storeToRefs(formStore);
+const { lastKanaName } = storeToRefs(formStore);
 const { address } = storeToRefs(formStore);
 
 const toConfirmPage = () => {
@@ -36,14 +36,14 @@ const toConfirmPage = () => {
       <!-- 姓名全体 -->
       <div class="form-width">
         <div class="name-container">
-          <LastName :lastName="lastName" />
           <FirstName :firstName="firstName" />
+          <LastName :lastName="lastName" />
         </div>
       </div>
       <div class="form-width">
         <div class="name-container">
-          <LastKanaName :lastKanaName="lastKanaName" />
           <FirstKanaName :firstKanaName="firstKanaName" />
+          <LastKanaName :lastKanaName="lastKanaName" />
         </div>
       </div>
       <Address :address="address" />
