@@ -14,16 +14,9 @@ const {
   address,
 } = storeToRefs(useFormStore());
 
-const fullName =
-  firstName.value +
-  " " +
-  lastName.value +
-  " " +
-  "(" +
-  firstKanaName.value +
-  " " +
-  lastKanaName.value +
-  ")";
+const fullName = firstName.value + " " + lastName.value ;
+const fullNameKana = firstKanaName.value + " " + lastKanaName.value ;
+
 const formInputText = `⚪︎予約内容\n来場希望日：${date.value}\n来場希望日：${reservationTime.value}\nお名前：${firstName.value} ${lastName.value} (${firstKanaName.value} ${lastKanaName.value})\nメールアドレス：${address.value}`;
 const sendMessage = async () => {
   try {
@@ -39,9 +32,41 @@ const sendMessage = async () => {
   }
 };
 
+const submitReservation = async () => {
+  try {
+    const response = await fetch('/api/v1/entries', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "entry": {
+        "date": date.value,
+        "reservation_time": reservationTime.value,
+        "first_name": firstName.value,
+        "last_name": lastName.value,
+        "first_name_kana": firstKanaName.value,
+        "last_name_kana": lastKanaName.value,
+        "email": address.value
+        }
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('POSTリクエストが失敗しました');
+    }
+
+    const responseData = await response.json();
+    console.log('Response data:', responseData);
+  } catch (error) {
+    console.error('POSTリクエスト時にエラーが発生しました:', error);
+  }
+};
+
 const toReservePage = () => {
   router.push("/");
   sendMessage();
+  submitReservation();
 };
 </script>
 
@@ -63,6 +88,10 @@ const toReservePage = () => {
         <p>{{ fullName }}</p>
       </div>
       <div class="item">
+        <label>フリガナ</label>
+        <p>{{ fullNameKana }}</p>
+      </div>
+      <div class="item">
         <label>メールアドレス</label>
         <p>{{ address }}</p>
       </div>
@@ -78,4 +107,3 @@ const toReservePage = () => {
   flex-flow: column;
 }
 </style>
-../stores/form../router

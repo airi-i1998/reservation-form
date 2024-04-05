@@ -16,6 +16,11 @@ Rails.application.configure do
 
   # Enable server timing
   config.server_timing = true
+  config.hosts << "96b304c5a1de.ngrok.app"
+  config.hosts << "http://192.167.3.4:3000"
+
+  # logレベル設定
+  config.log_level = :debug
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

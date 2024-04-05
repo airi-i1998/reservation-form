@@ -1,44 +1,29 @@
 module Api
 	module V1
     class EntriesController < ApplicationController
-			before_action :set_entry,only: [:show, :update, :destroy]
-
-			# Get /entries
-			# すべてのエントリーを取得し、JSON形式でレスポンス
+			skip_before_action :verify_authenticity_token
+			
 			def index
 				entries = Entry.all
-				render json: { status: 'SUCCESS!', message: 'リクエストが返ってくること確認完了！'}
+				render json: { status: 'SUCCESS!', message: 'リクエストに対する結果取得確認完了！'}
 			end
-
-			# GET /entries/1
-			# set_entryメソッドでセットされた特定のエントリーオブジェクトを参照
-			def show
-				render json: @Entry
-			end
-
 			# POST /entries
 			# 新しいエントリーオブジェクトを作成
 			def create 
 				@entry = Entry.new(entry_params)
 
+				Rails.logger.info("Received parameters: #{entry_params}")
+
 				if @entry.save
-					render json: @entry, statue: :created, location: @entry
+					render json: @entry, status: :created
 				else
-					render json: @entry.errors, statue: :unprocessable_entry
+					render json: { errors: @entry.errors.full_messages }, status: :unprocessable_entry
 				end
 			end
 
-			def destroy
-				@entry.destroy
-			end
-
 			private
-			def set_entry
-				@entry = Entry.find(params[:id])
-			end
-
 			def entry_params
-				params.require(:entry).permit(:title, :content)
+				params.require(:entry).permit(:date, :reservation_time, :first_name, :last_name, :first_name_kana, :last_name_kana, :email)
 			end
 		end
 	end

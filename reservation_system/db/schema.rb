@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_02_032207) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_05_103451) do
   create_table "entries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "line_id"
-    t.string "uuid", null: false
     t.string "date", null: false
     t.string "reservation_time", null: false
-    t.string "fullname", null: false
-    t.string "fullname_kana", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
     t.string "email", null: false
-    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

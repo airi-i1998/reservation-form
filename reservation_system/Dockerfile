@@ -6,3 +6,7 @@ COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 ENV LANG=ja_JP.UTF-8
 ENV TZ=Asia/Tokyo
+
+# コンテナがリッスンするポートを指定する
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]

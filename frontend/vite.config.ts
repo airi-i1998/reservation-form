@@ -1,4 +1,4 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -21,15 +21,19 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+    hmr: {
+      overlay: false,
+    },
+    host: true,
+    port: 8080,
+    proxy: {
+      '/api': {
+        target: 'http://192.167.3.4:3000',
+        // ブラウザからのリクエストをプロキシサーバーを介して別のサーバーに転送する設定
+        changeOrigin: true,
+      }
+    }
   }
-  // ,
-  // server: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'http://localhost:8080',
-  //       // ブラウザからのリクエストをプロキシサーバーを介して別のサーバーに転送する設定
-  //       changeOrigin: true,
-  //     }
-  //   }
-  // }
 })
