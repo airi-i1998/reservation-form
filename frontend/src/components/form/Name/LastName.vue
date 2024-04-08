@@ -18,3 +18,4 @@ const updateLastName = (event) => {
     <input v-model="formLastName" @input="updateLastName" />
   </div>
 </template>
+../../../stores/form

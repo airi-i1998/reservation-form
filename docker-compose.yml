@@ -1,17 +1,38 @@
 version: "3.8"
 services:
-  app:
+  front:
+    build:
+      context: ./frontend
+    # 開発者がコンテナ内のアプリケーションを効果的に操作できるように設定
+    tty: true
+    ports:
+      - 8080:8080
+    volumes:
+      - ./frontend:/app
+      - front_node_modules:/app/node_modules
+    networks:
+      wecall_net:
+        ipv4_address: $CLIENT_IP
+
+  server:
     build: ./reservation_system
+    
     tty: true
     ports:
       - 3000:3000
       # appが更新されたら、コンテナ起動時にreservation_systemが更新される
     volumes:
       - ./reservation_system:/app
+    networks:
+      wecall_net:
+        ipv4_address: $SERVER_IP
     environment:
+      TZ: UTC
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-    depends_on: 
+      # サーバーがDBに依存していることを示している
+    depends_on:
       - db
+
   db:
     image: mysql:8.3.0
     ports:
@@ -19,13 +40,28 @@ services:
     volumes:
       # - ../mysql/init.d:/docker-entrypoint-initdb.d
       # /var/lib/mysqlが更新されたら、コンテナ起動時に./dab/dataが更新される
-      - './db/data:/var/lib/mysql'
+      - "./db/data:/var/lib/mysql"
+    networks:
+      wecall_net:
+        ipv4_address: $DB_HOST
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_USER: $MYSQL_USER
       MYSQL_PASSWORD: $MYSQL_PASSWORD
-      MYSQL_INITDB_ARGS: "--encoding=UTF-8"
-      TZ: "Asia/Tokyo"
+      #MYSQL_INITDB_ARGS: "--encoding=UTF-8"
     hostname: $DB_HOSTNAME
     restart: always
     user: $DB_USER
+
+volumes:
+  front_node_modules:
+
+networks:
+  wecall_net:
+  # Dockerコンテナがホストと通信するため
+    driver: bridge
+    # IPアドレス管理（IPAM）の設定
+    ipam:
+      driver: default
+      config:
+        - subnet: $SUBNET

@@ -10,7 +10,6 @@ import { useFormStore } from "@/stores/form";
 import { storeToRefs } from "pinia";
 import router from "@/router.ts";
 
-
 const formStore = useFormStore();
 const { date } = storeToRefs(formStore);
 const { reservationTime } = storeToRefs(formStore);
@@ -136,3 +135,4 @@ button {
   border-radius: 5px;
 }
 </style>
+../stores/form../router

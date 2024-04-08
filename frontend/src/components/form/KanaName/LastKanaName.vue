@@ -18,3 +18,4 @@ const updateLastKanaName = (event) => {
     <input v-model="formLastKanaName" @input="updateLastKanaName" />
   </div>
 </template>
+../../../stores/form
