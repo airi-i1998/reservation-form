@@ -16,7 +16,7 @@ Rails.application.configure do
 
   # Enable server timing
   config.server_timing = true
-  config.hosts << "96b304c5a1de.ngrok.app"
+  config.hosts << "a93eea6f1d73.ngrok.app"
   config.hosts << "http://192.167.3.4:3000"
 
   # logレベル設定

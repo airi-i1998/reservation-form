@@ -2,7 +2,8 @@
 import { useFormStore } from "@/stores/form";
 import { storeToRefs } from "pinia";
 import router from "@/router.ts";
-import liff from "@line/liff";
+// import liff from "@line/liff";
+import axios from 'axios'
 
 const {
   date,
@@ -17,18 +18,13 @@ const {
 const fullName = firstName.value + " " + lastName.value ;
 const fullNameKana = firstKanaName.value + " " + lastKanaName.value ;
 
-const formInputText = `⚪︎予約内容\n来場希望日：${date.value}\n来場希望日：${reservationTime.value}\nお名前：${firstName.value} ${lastName.value} (${firstKanaName.value} ${lastKanaName.value})\nメールアドレス：${address.value}`;
-const sendMessage = async () => {
+const sendFlexMessage = async () => {
   try {
-    await liff.sendMessages([
-      {
-        type: "text",
-        text: formInputText,
-      },
-    ]);
-    console.log("message sent");
-  } catch (err) {
-    console.log("error", err);
+    // RailsコントローラのエンドポイントにPOSTリクエストを送信
+    const response = await axios.post('/api/v1/line_messages');
+    console.log('Message sent successfully:', response.data);
+  } catch (error) {
+    console.error('Failed to send message:', error.response.data);
   }
 };
 
@@ -58,6 +54,7 @@ const submitReservation = async () => {
 
     const responseData = await response.json();
     console.log('Response data:', responseData);
+    await sendFlexMessage();
   } catch (error) {
     console.error('POSTリクエスト時にエラーが発生しました:', error);
   }
@@ -65,7 +62,6 @@ const submitReservation = async () => {
 
 const toReservePage = () => {
   router.push("/");
-  sendMessage();
   submitReservation();
 };
 </script>
